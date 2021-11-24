@@ -85,8 +85,20 @@ class ChatAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class ViewHolderHeader(private val binding: HeaderBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind() = with(binding) {
-            userFirstButton.text = "User 1: "
-            userSecondButton.text = "User 2: "
+            userFirstButton.text = "User 1: " + countMessageFirstUser
+            userSecondButton.text = "User 2: " + countMessageSecondUser
+
+            userFirstButton.setOnClickListener {
+                user = 1
+                userFirstButton.setBackgroundResource(R.color.design_default_color_primary_variant)
+                userSecondButton.setBackgroundResource(android.R.color.darker_gray)
+            }
+
+            userSecondButton.setOnClickListener {
+                user = 2
+                userFirstButton.setBackgroundResource(android.R.color.darker_gray)
+                userSecondButton.setBackgroundResource(R.color.design_default_color_primary_variant)
+            }
         }
     }
 
