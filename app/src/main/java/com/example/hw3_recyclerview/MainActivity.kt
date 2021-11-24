@@ -14,7 +14,7 @@ var countMessageSecondUser = 0
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val adapter = ChatAdapter()
-    private val dividerItemDecoration = DividerItemDecoration(this, RecyclerView.VERTICAL)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +27,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun initAdapter(){
         binding.apply {
+
             chatRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
             chatRecyclerView.adapter = adapter
 
+            val dividerItemDecoration = DividerItemDecoration(this@MainActivity, RecyclerView.VERTICAL)
             dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.item_devider))
             chatRecyclerView.addItemDecoration(dividerItemDecoration)
 
