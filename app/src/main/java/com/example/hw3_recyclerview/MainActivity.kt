@@ -5,6 +5,10 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hw3_recyclerview.databinding.ActivityMainBinding
 
+var user = 1
+var countMessageFirstUser = 0
+var countMessageSecondUser = 0
+
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val adapter = ChatAdapter()
@@ -22,6 +26,16 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             chatRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
             chatRecyclerView.adapter = adapter
+
+            sendButton.setOnClickListener {
+                adapter.addMessage(Messages(user, editText.text.toString()))
+                editText.setText("")
+
+                if(user == 1)
+                    countMessageFirstUser++
+                else
+                    countMessageSecondUser++
+            }
         }
     }
 }

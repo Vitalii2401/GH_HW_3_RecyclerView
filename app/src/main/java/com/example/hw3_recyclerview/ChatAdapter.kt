@@ -89,4 +89,9 @@ class ChatAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             userSecondButton.text = "User 2: "
         }
     }
+
+    fun addMessage(msg: Messages){
+        messages.add(msg)
+        notifyDataSetChanged()
+    }
 }
