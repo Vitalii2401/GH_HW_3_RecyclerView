@@ -36,13 +36,15 @@ class MainActivity : AppCompatActivity() {
             chatRecyclerView.addItemDecoration(dividerItemDecoration)
 
             sendButton.setOnClickListener {
-                adapter.addMessage(Messages(user, editText.text.toString()))
-                editText.setText("")
+                if(editText.text.toString() != "") {
+                    adapter.addMessage(Messages(user, editText.text.toString()))
+                    editText.setText("")
 
-                if(user == 1)
-                    countMessageFirstUser++
-                else
-                    countMessageSecondUser++
+                    if (user == 1)
+                        countMessageFirstUser++
+                    else
+                        countMessageSecondUser++
+                }
             }
         }
     }
