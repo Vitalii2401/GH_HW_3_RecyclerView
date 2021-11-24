@@ -2,7 +2,9 @@ package com.example.hw3_recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hw3_recyclerview.databinding.ActivityMainBinding
 
 var user = 1
@@ -12,6 +14,7 @@ var countMessageSecondUser = 0
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val adapter = ChatAdapter()
+    private val dividerItemDecoration = DividerItemDecoration(this, RecyclerView.VERTICAL)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             chatRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
             chatRecyclerView.adapter = adapter
+
+            dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.item_devider))
+            chatRecyclerView.addItemDecoration(dividerItemDecoration)
 
             sendButton.setOnClickListener {
                 adapter.addMessage(Messages(user, editText.text.toString()))
